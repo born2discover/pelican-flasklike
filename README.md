@@ -72,6 +72,6 @@ THEME='/absolute/path/to/pelican-flasklike'
 [Pelican Documentation](http://docs.getpelican.com/en/3.6.3/)
 
 ## TODO
-[ ] Google Analytics code
-
-[ ] Piwik code
+* Google Analytics code
+* Piwik code
+I
