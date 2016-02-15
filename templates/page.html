@@ -4,6 +4,23 @@
     {{ super() }}
     <meta name="description" content="{{ page.description }}">
 {% endblock %}
+
+{% if TWITTER_CARDS %}
+{% block twitter_cards %}
+    <meta name="twitter:domain" content="{{ SITEURL }}/{{ page.url }}">
+    <meta name="twitter:title" content="{{ page.title|striptags }}">
+    <meta name="twitter:description" content="{{ page.description|striptags }}">
+{% endblock %}
+{% endif %}
+
+{% if FACEBOOK_OPEN_GRAPH %}
+{% block facebook_opengraph %}
+    <meta property="og:title" content="{{ page.title|striptags }}">
+    <meta property="og:url" content="{{ page.url }}">
+    <meta property="og:description" content="{{ page.description|striptags }}">
+{% endblock %}
+{% endif %}
+
 {% block content %}
 <article class="post" role="article">
     <div class="post-title">

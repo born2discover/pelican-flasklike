@@ -10,6 +10,22 @@
     {% endfor %}
 {% endblock %}
 
+{% if TWITTER_CARDS %}
+{% block twitter_cards %}
+    <meta name="twitter:domain" content="{{ SITEURL }}/{{ article.url }}">
+    <meta name="twitter:title" content="{{ article.title|striptags }}">
+    <meta name="twitter:description" content="{{ article.summary|striptags }}">
+{% endblock %}
+{% endif %}
+
+{% if FACEBOOK_OPEN_GRAPH %}
+{% block facebook_opengraph %}
+    <meta property="og:title" content="{{ article.title|striptags }}">
+    <meta property="og:url" content="{{ article.url }}">
+    <meta property="og:description" content="{{ article.summary|striptags }}">
+{% endblock %}
+{% endif %}
+
 {% block content %}
 <article class="post" role="article">
     <div class="post-title">

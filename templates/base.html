@@ -10,33 +10,31 @@
 
     <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/styles/normalize.css">
     <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/styles/style.css">
-
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/styles/font-awesome.min.css">
     {% if FACEBOOK_OPEN_GRAPH %}
+
     <meta property="og:type" content="website">
-    <meta property="og:title" content="{{ page.title }}">
-    <meta property="og:url" content="{{ page.url }}">
-    <meta property="og:description" content="{{ page.description }}">
-    <meta property="og:site_name" content="{{ page.author }}">
-    <meta property="og:image" content="{{ page.author.avatar }}">
+    <meta property="og:site_name" content="{{ SITENAME }}">
+    {% block facebook_opengraph %}
+    <meta property="og:title" content="{{ SITENAME }}">
+    <meta property="og:url" content="{{ SITEURL }}">
+    {% endblock %}
     {% endif %}
+    {% if TWITTER_CARDS and TWITTER_USERNAME %}
 
-    {% if TWITTER_CARDS %}
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="{{ twitter.username }}">
-    <meta name="twitter:creator" content="{{ twitter.username }}">
-    <meta name="twitter:domain" content="{{ site.domain }}">
-    <meta name="twitter:image" content="{{ page.author.avatar }}">
-    <meta name="twitter:title" content="{{ page.title }}">
-    <meta name="twitter:description" content="{{ page.description }}">
+    <meta name="twitter:site" content="{{ TWITTER_USERNAME }}">
+    <meta name="twitter:creator" content="{{ TWITTER_USERNAME }}">
+    {% block twitter_cards %}
+    <meta name="twitter:domain" content="{{ SITEURL }}">
+    {% endblock %}
     {% endif %}
-
     {% if USE_FAVICONS %}
-    <link rel="shortcut icon" href="/theme/images/favicon.ico">
-	<link rel="apple-touch-icon" href="/theme/images/apple-touch-icon.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="/theme/images/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="/theme/images/apple-touch-icon-114x114.png">
+    <link rel="shortcut icon" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/favicon.ico">
+	<link rel="apple-touch-icon" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/apple-touch-icon-114x114.png">
     {% endif %}
-
     {% if FEED_ALL_ATOM %}
     <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed" />
     {% endif %}
@@ -61,7 +59,6 @@
     {% if TAG_FEED_RSS and tag %}
     <link href="{{ FEED_DOMAIN }}/{{ TAG_FEED_RSS|format(tag.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed" />
     {% endif %}
-
     {% block meta %}
     <meta name="author" content="{{ AUTHOR }}">
     <meta name="copyright" content="&copy; Copyright {{ YEAR }} {{ AUTHOR }}">
@@ -97,7 +94,39 @@
     </header>
     <main class="main">{% block content %}{% endblock %}</main>
     <footer class="footer">
-        <p>&copy; Copyright <script>document.write(new Date().getFullYear());</script> <a href="{{ SITEURL }}">{{ AUTHOR }}</a>. {{ LICENCE }} Proudly powered by <a href="http://getpelican.com/">Pelican</a>.</p>
+        <p>&copy; Copyright <script>document.write(new Date().getFullYear());</script> <a href="{{ SITEURL }}">{{ AUTHOR }}</a>. {{ LICENCE }} Proudly powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/born2discover/pelican-flasklike">Flasklike</a> by <a href="https://github.com/born2discover">born2discover</a>.</p>
+
+        <ul class="social">
+            {% if EMAIL %}
+            <li><script language="JavaScript">
+                document.write("<a href=\"mailto:" + '{{ EMAIL }}' + "\" target=\"_blank\">" + '<i class="fa fa-envelope fa-2x"></i>' + "<\/a>");
+                </script>
+                <noscript>
+                    <em>Email address protected by JavaScript. Activate JavaScript to see the email.</em>
+                </noscript>
+            </li>
+            {% endif %}
+            {% if TWITTER_USERNAME %}
+            <li><a href="http://twitter.com/{{ TWITTER_USERNAME }}" target="_blank"><i class="fa fa-twitter fa-2x"></i></a></li>
+            {% endif %}
+
+            {% if LINKEDIN_URL %}
+            <li><a href="{{ LINKEDIN_URL }}" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a></li>
+            {% endif %}
+
+            {% if GITHUB_URL %}
+            <li><a href="{{ GITHUB_URL }}" target="_blank"><i class="fa fa-github-alt fa-2x"></i></a></li>
+            {% endif %}
+
+            {% if FACEBOOK_URL %}
+            <li><a href="{{ FACEBOOK_URL }}" target="_blank"><i class="fa fa-facebook fa-2x"></i></a></li>
+            {% endif %}
+
+            {% if GOOGLEPLUS_URL %}
+            <li><a href="{{ GOOGLEPLUS_URL }}" target="_blank"><i class="fa fa-google-plus fa-2x"></i></a></li>
+            {% endif %}
+            <li><a href="{{ SITEURL }}/feeds/all.rss.xml" rel="alternate" title="Recent Blog Posts"><i class="fa fa-rss fa-2x"></i></a></li>
+        </ul>
     </footer>
 </div>
 </body>
