@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ DEFAULT_LANG }}">
 <head>
-    {% block head %}
+{% block head %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/styles/normalize.css">
     <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/styles/style.css">
     <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/styles/font-awesome.min.css">
-    {% if FACEBOOK_OPEN_GRAPH %}
+{% if FACEBOOK_OPEN_GRAPH %}
 
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{{ SITENAME }}">
@@ -19,8 +19,8 @@
     <meta property="og:title" content="{{ SITENAME }}">
     <meta property="og:url" content="{{ SITEURL }}">
     {% endblock %}
-    {% endif %}
-    {% if TWITTER_CARDS and TWITTER_USERNAME %}
+{% endif %}
+{% if TWITTER_CARDS and TWITTER_USERNAME %}
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="{{ TWITTER_USERNAME }}">
@@ -28,42 +28,42 @@
     {% block twitter_cards %}
     <meta name="twitter:domain" content="{{ SITEURL }}">
     {% endblock %}
-    {% endif %}
-    {% if USE_FAVICONS %}
+{% endif %}
+{% if USE_FAVICONS %}
     <link rel="shortcut icon" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/favicon.ico">
 	<link rel="apple-touch-icon" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/apple-touch-icon-114x114.png">
-    {% endif %}
-    {% if FEED_ALL_ATOM %}
+{% endif %}
+{% if FEED_ALL_ATOM %}
     <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed" />
-    {% endif %}
-    {% if FEED_ALL_RSS %}
+{% endif %}
+{% if FEED_ALL_RSS %}
     <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Full RSS Feed" />
-    {% endif %}
-    {% if FEED_ATOM %}
+{% endif %}
+{% if FEED_ATOM %}
     <link href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
-    {% endif %}
-    {% if FEED_RSS %}
+{% endif %}
+{% if FEED_RSS %}
     <link href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
-    {% endif %}
-    {% if CATEGORY_FEED_ATOM and category %}
+{% endif %}
+{% if CATEGORY_FEED_ATOM and category %}
     <link href="{{ FEED_DOMAIN }}/{{ CATEGORY_FEED_ATOM|format(category.slug) }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Categories Atom Feed" />
-    {% endif %}
-    {% if CATEGORY_FEED_RSS and category %}
+{% endif %}
+{% if CATEGORY_FEED_RSS and category %}
     <link href="{{ FEED_DOMAIN }}/{{ CATEGORY_FEED_RSS|format(category.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Categories RSS Feed" />
-    {% endif %}
-    {% if TAG_FEED_ATOM and tag %}
+{% endif %}
+{% if TAG_FEED_ATOM and tag %}
     <link href="{{ FEED_DOMAIN }}/{{ TAG_FEED_ATOM|format(tag.slug) }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Tags Atom Feed" />
-    {% endif %}
-    {% if TAG_FEED_RSS and tag %}
+{% endif %}
+{% if TAG_FEED_RSS and tag %}
     <link href="{{ FEED_DOMAIN }}/{{ TAG_FEED_RSS|format(tag.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed" />
-    {% endif %}
-    {% block meta %}
+{% endif %}
+{% block meta %}
     <meta name="author" content="{{ AUTHOR }}">
     <meta name="copyright" content="&copy; Copyright {{ YEAR }} {{ AUTHOR }}">
-    {% endblock %}
-    {% endblock %}
+{% endblock %}
+{% endblock %}
 </head>
 <body>
 <div class="container">
@@ -73,31 +73,33 @@
         </div>
         <nav class="navigation" role="navigation">
             <ul id="menu" role="menu">
-                {% block menu %}
-                {% for title, link in MENUITEMS %}
+{% block menu %}
+{% for title, link in MENUITEMS %}
                 <li><a href="{{ link }}">{{ title }}</a></li>
-                {% endfor %}
-                {% if DISPLAY_PAGES_ON_MENU %}
-                {% for p in pages %}
+{% endfor %}
+{% if DISPLAY_PAGES_ON_MENU %}
+{% for p in pages %}
                 <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
-                {% endfor %}
-                {% else %}
-                {% if DISPLAY_CATEGORIES_ON_MENU %}
-                {% for cat, null in categories %}
+{% endfor %}
+{% else %}
+{% if DISPLAY_CATEGORIES_ON_MENU %}
+{% for cat, null in categories %}
                 <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
-                {% endfor %}
-                {% endif %}
-                {% endif %}
-                {% endblock %}
+{% endfor %}
+{% endif %}
+{% endif %}
+{% endblock %}
             </ul>
         </nav>
     </header>
-    <main class="main">{% block content %}{% endblock %}</main>
+    <main class="main">
+        {% block content %}{% endblock %}
+    </main>
     <footer class="footer">
         <p>&copy; Copyright <script>document.write(new Date().getFullYear());</script> <a href="{{ SITEURL }}">{{ AUTHOR }}</a>. {{ LICENCE }} Proudly powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/born2discover/pelican-flasklike">Flasklike</a> by <a href="https://github.com/born2discover">born2discover</a>.</p>
 
         <ul class="social">
-            {% if EMAIL %}
+{% if EMAIL %}
             <li><script language="JavaScript">
                 document.write("<a href=\"mailto:" + '{{ EMAIL }}' + "\" target=\"_blank\">" + '<i class="fa fa-envelope fa-2x"></i>' + "<\/a>");
                 </script>
@@ -105,29 +107,56 @@
                     <em>Email address protected by JavaScript. Activate JavaScript to see the email.</em>
                 </noscript>
             </li>
-            {% endif %}
-            {% if TWITTER_USERNAME %}
+{% endif %}
+{% if TWITTER_USERNAME %}
             <li><a href="http://twitter.com/{{ TWITTER_USERNAME }}" target="_blank"><i class="fa fa-twitter fa-2x"></i></a></li>
-            {% endif %}
-
-            {% if LINKEDIN_URL %}
+{% endif %}
+{% if LINKEDIN_URL %}
             <li><a href="{{ LINKEDIN_URL }}" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a></li>
-            {% endif %}
-
-            {% if GITHUB_URL %}
+{% endif %}
+{% if GITHUB_URL %}
             <li><a href="{{ GITHUB_URL }}" target="_blank"><i class="fa fa-github-alt fa-2x"></i></a></li>
-            {% endif %}
-
-            {% if FACEBOOK_URL %}
+{% endif %}
+{% if FACEBOOK_URL %}
             <li><a href="{{ FACEBOOK_URL }}" target="_blank"><i class="fa fa-facebook fa-2x"></i></a></li>
-            {% endif %}
-
-            {% if GOOGLEPLUS_URL %}
+{% endif %}
+{% if GOOGLEPLUS_URL %}
             <li><a href="{{ GOOGLEPLUS_URL }}" target="_blank"><i class="fa fa-google-plus fa-2x"></i></a></li>
-            {% endif %}
+{% endif %}
             <li><a href="{{ SITEURL }}/feeds/all.rss.xml" rel="alternate" title="Recent Blog Posts"><i class="fa fa-rss fa-2x"></i></a></li>
         </ul>
     </footer>
 </div>
+{% if GOOGLE_ANALYTICS_ACCOUNT %}
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', '{{ GOOGLE_ANALYTICS_ACCOUNT }}']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+{% endif %}
+{% if PIWIK_URL and PIWIK_SITE_ID %}
+<script type="text/javascript">
+    {% if PIWIK_SSL_URL %}
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://{{ PIWIK_SSL_URL }}/" : "http://{{ PIWIK_URL }}/");
+    {% else %}
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://{{ PIWIK_URL }}/" : "http://{{ PIWIK_URL }}/");
+    {% endif %}
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", {{ PIWIK_SITE_ID }});
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript>
+    <p><img src="http://{{ PIWIK_URL }}/piwik.php?idsite={{ PIWIK_SITE_ID }}" style="border:0" alt="" /></p>
+</noscript>
+{% endif %}
 </body>
 </html>

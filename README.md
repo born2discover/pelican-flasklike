@@ -11,11 +11,9 @@ In order to correctly use this theme, you'll need your `pelicanconf.py` file to 
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = 'Your Name'
-SITENAME = 'Site Title'
-SITEURL = 'http://www.example.com'
-
-#Path to the content directory.
+AUTHOR = 'Example Author'
+SITENAME = 'ExampleSite'
+SITEURL = ''
 PATH = 'content'
 TIMEZONE = 'Europe/Berlin'
 DEFAULT_LANG = 'en'
@@ -26,23 +24,17 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
-
-# Blogroll
-MENUITEMS = (('Archive', SITEURL + '/archives/'),)
+DEFAULT_PAGINATION = 5
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
-# Path to the theme, something like ~/Downloads/pelican-flasklike
+TYPOGRIFY = True
 THEME = 'pelican-flasklike'
-
-#Entries configuration
 DEFAULT_DATE_FORMAT = '%d %B %Y'
 DISPLAY_PAGES_ON_MENU = True
-DEFAULT_PAGINATION = 5
-TYPOGRIFY = True
 
-#Example output configuration
+
 ARTICLE_URL = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
 ARTICLE_SAVE_AS = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
 PAGE_URL = '{slug}/'
@@ -50,9 +42,27 @@ PAGE_SAVE_AS = '{slug}/index.html'
 YEAR_ARCHIVE_SAVE_AS = 'posts/{date:%Y}/index.html'
 MONTH_ARCHIVE_SAVE_AS = 'posts/{date:%Y}/{date:%m}/index.html'
 ARCHIVES_SAVE_AS = 'archives/index.html'
+DELETE_OUTPUT_DIRECTORY = True
 
-# Template specific codes.
+# Template specific
+MENUITEMS = (
+    ('Archive', SITEURL + '/archives/'),
+)
 LICENCE = 'Content licensed under the Creative Commons attribution-noncommercial-sharealike License.'
+
+# Social Links
+EMAIL = None
+TWITTER_USERNAME = None # Twitter without the @
+LINKEDIN_URL = None
+FACEBOOK_URL = None
+GOOGLEPLUS_URL = None
+
+TWITTER_CARDS = True
+FACEBOOK_OPEN_GRAPH = True
+GOOGLE_ANALYTICS_ACCOUNT = None # Can be a string like: 'UA-00000000-1'
+PIWIK_URL =  None # Can be a string like: 'myurl.com/piwik'
+PIWIK_SSL_URL = None # Can be a string like: 'myurl.com/piwik'
+PIWIK_SITE_ID = None # Can be a string like: '1'
 ```
 ## Instalation instructions
 ```shell
@@ -74,7 +84,3 @@ THEME='/absolute/path/to/pelican-flasklike'
 ![Homepage](screenshots/flasklike-frontpage.png)
 ![Archives](screenshots/flasklike-archives.png)
 ![Page](screenshots/flasklike-page.png)
-
-## TODO
-* Google Analytics code
-* Piwik code
