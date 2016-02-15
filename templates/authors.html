@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Authors - {{ SITENAME }}{% endblock %}
+{% block content %}
+    <h2 id="year">Authors on {{ SITENAME }}</h2>
+    <ul class="archive-year">
+    {% for author, articles in authors|sort %}
+        <li><a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a> ({{ articles|count }})</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

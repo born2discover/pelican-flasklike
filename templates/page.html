@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}{{ page.title }} - {{ SITENAME }}{% endblock %}
+{% block meta %}
+    {{ super() }}
+    <meta name="description" content="{{ page.description }}">
+{% endblock %}
+{% block content %}
+<article class="post" role="article">
+    <div class="post-title">
+        <h2>{{ page.title }}</h2>
+    </div>
+    {{ page.content }}
+    {% if page.modified %}
+    <p>Last updated: {{ page.locale_modified }}</p>
+    {% endif %}
+</article>
+{% endblock %}
