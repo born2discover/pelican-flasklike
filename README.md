@@ -71,6 +71,10 @@ THEME='/absolute/path/to/pelican-flasklike'
 ## Additional pieces of information
 [Pelican Documentation](http://docs.getpelican.com/en/3.6.3/)
 
+![Homepage](screenshots/flasklike-frontpage.png)
+![Archives](screenshots/flasklike-archives.png)
+![Page](screenshots/flasklike-page.png)
+
 ## TODO
 * Google Analytics code
 * Piwik code
