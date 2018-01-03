@@ -1,10 +1,10 @@
 # Pelican-flasklike
 
-A pelican template inspired by [Flask](http://flask.pocoo.org/) website, [Armin Ronacher's blog](http://lucumr.pocoo.org/) and [flasky](https://github.com/fjavieralba/flasky) by [Javier Alba](https://github.com/fjavieralba). Feel free to add and also tweak it and add more features to it as it is released under MIT licence.
+A template for [Pelican](https://blog.getpelican.com/) static site generator inspired by [Flask](http://flask.pocoo.org/)'s website, [Armin Ronacher](http://lucumr.pocoo.org/)'s blog and [flasky](https://github.com/fjavieralba/flasky) theme by [Javier Alba](https://github.com/fjavieralba). This theme is released under MIT license so anybody is free to tweak it and to add things they see fit. Pull requests with changes are also welcome.
 
 ## Configuration
 
-In order to correctly use this theme, you'll need your `pelicanconf.py` file to look like this:
+In order to correctly use this theme, you'll need your `pelicanconf.py` file to look similar to this:
 
 ```python
 #!/usr/bin/env python
@@ -33,7 +33,6 @@ TYPOGRIFY = True
 THEME = 'pelican-flasklike'
 DEFAULT_DATE_FORMAT = '%d %B %Y'
 DISPLAY_PAGES_ON_MENU = True
-
 
 ARTICLE_URL = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
 ARTICLE_SAVE_AS = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
@@ -70,7 +69,7 @@ cd directory_where_you_initiated_pelican
 git clone git@github.com:born2discover/pelican-flasklike.git
 ```
 
-Then simply edited your `pelicanconf.py` to point to that directory.
+Then simply edit your `pelicanconf.py` to point to that directory.
 
 ```python
 THEME='pelican-flasklike'
@@ -82,5 +81,3 @@ THEME='/absolute/path/to/pelican-flasklike'
 [Pelican Documentation](http://docs.getpelican.com/en/3.6.3/)
 
 ![Homepage](screenshots/flasklike-frontpage.png)
-![Archives](screenshots/flasklike-archives.png)
-![Page](screenshots/flasklike-page.png)
